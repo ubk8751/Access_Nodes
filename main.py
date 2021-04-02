@@ -65,7 +65,10 @@ def get_data(unit_name):
         # In this case, print the name of all sensors, 
         # but this can be changed depending on what you want
         for i in range(len(data)):
-            print(data[i]["name"])
+            try:
+                print(data[i]["name"] + ": " + str(data[i]["description"]) + "\n")
+            except:
+                print(data[i]["name"] + ": " + "No descrition\n")
 
 def get_all_names():
     '''
@@ -107,7 +110,7 @@ def get_all_names():
         # In this case, print the name of all sensors, 
         # but this can be changed depending on what you want
         for i in range(len(data)):
-            print("Id: " + data[i]["_id"])
+            print(data[i]["name"])
 
 def create_auth(u_name, p_word):
     '''
