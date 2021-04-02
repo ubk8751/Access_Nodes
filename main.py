@@ -50,7 +50,6 @@ def get_data(unit_name):
         for i in range(len(data)):
             print(data[i]["name"])
 
-
 def create_auth(u_name, p_word):
     # Needed stuff, don't touch
     header = {
@@ -69,21 +68,25 @@ def create_auth(u_name, p_word):
     
     # Get the authorisation token
     try:
-        request = requests.get(url, data=payload, headers=header)
+        request = requests.post(url=url, data=json.dumps(payload), headers=header)
     except:
         print("Not a Json respose")
-        quit()
     print(request)
     
     # Check if the status is ok
     if request.status_code == 200:
         # Convert the request object to a json file
-        request.json()
+        r = request.json()
+
+        r["username"] = u_name
+
+        r["password"] = p_word
+
         try:
             # Dump the dictionary as a Json file named data.json
             with open("token.json", "w") as outfile: 
-                json.dump(request, outfile)
-            print("Json created")
+                json.dump(r, outfile)
+            print("Token created")
     
         # If there is an error in the creation of the file
         except IOError:
@@ -92,12 +95,12 @@ def create_auth(u_name, p_word):
 if __name__ == "__main__":
     # u_name is the name of the sensor, leave blank to print complete 
     # list of sensors connected with the account. Only include one sensor at a time.
-    u_name = "Motion Sensor 14"
+    # u_name = ""
     
-    # u_name = "test@test.com"
-    # p_word = "test"
+    u_name = "test@test.com"
+    p_word = "test"
 
     # Choose what you wnat to do
-    # create_auth(u_name, p_word)
-    get_data(u_name)
+    create_auth(u_name, p_word)
+    # get_data(u_name)
 
