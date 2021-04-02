@@ -107,7 +107,7 @@ def get_all_names():
         # In this case, print the name of all sensors, 
         # but this can be changed depending on what you want
         for i in range(len(data)):
-            print(data[i]["name"])
+            print("Id: " + data[i]["_id"])
 
 def create_auth(u_name, p_word):
     '''
@@ -167,8 +167,8 @@ if __name__ == "__main__":
     '''unit_name is the name of the sensor, leave blank to print complete 
     list of sensors connected with the account. Only include one sensor at a time.'''
     
-    # unit_name = ""
-    # get_data(unit_name)
+    unit_name = ""
+    get_data(unit_name)
     
     '''u_name is the username and p_word is the password that will 
     be used for logging in'''
@@ -178,5 +178,4 @@ if __name__ == "__main__":
     # create_auth(u_name, p_word)
 
     '''Easy way to print all of the sensors connected to the user'''
-    get_all_names()
-
+    # get_all_names()

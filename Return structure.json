@@ -2,7 +2,8 @@
 	{
 		"_id":"5d78a68a9f92a30005665b6b",
 		"rabbitRouting":{"value":["publisher"]},
-		"connected":true,"latlng":[],
+		"connected":true,
+		"latlng":[],
 		"version":17,
 		"category":"uncategorized",
 		"nodeType":"zwave-device",
